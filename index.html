@@ -94,7 +94,13 @@ body {
   overflow-wrap: break-word;
 }
 
-img { max-width: 100%; display: block; }
+/* 🔴 `height: auto` 가 없으면 **세로로 늘어난다** (2026-09-15 실측).
+   img 에 width·height 속성을 적어 두면(레이아웃이 안 튀게 하려고 적는다)
+   CSS 로 width 만 100% 로 바꿨을 때 **높이는 속성값 그대로** 남는다 —
+   560×996 이 340×996 이 되고, 400×400 워치는 184×400 이 돼 액자를 뚫는다.
+   ⚠ 속성을 지우는 것으로 고치지 않는다. 그러면 이미지가 도착하기 전까지
+     자리를 안 잡아 글이 튄다. 둘 다 필요하다. */
+img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
 
 :focus-visible {
